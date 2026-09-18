@@ -2,13 +2,12 @@
   "name": "tickerwall",
   "version": "1.0.0",
   "description": "A multi-monitor stock dashboard for Windows",
-  "author": "TickerWall",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "dev": "electron . --dev",
-    "dist:win": "electron-builder --win nsis --publish never",
-    "dist:win:portable": "electron-builder --win portable --publish never",
+    "dist:win": "electron-builder --win nsis",
+    "dist:win:portable": "electron-builder --win portable",
     "lint": "node --check main.js && node --check preload.js && node --check renderer.js"
   },
   "devDependencies": {
