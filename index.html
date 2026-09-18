@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>TickerWall</title><link rel="stylesheet" href="styles.css" /></head>
+  <body>
+    <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="ambient ambient-three"></div>
+    <main class="dashboard">
+      <header><div class="brand glass-chip"><span class="brand-mark">TW</span><span>TickerWall</span></div><div class="status glass-chip"><i></i><span id="market-status">MARKET DATA</span><span class="dot">•</span><span id="clock"></span></div></header>
+      <section class="quote" aria-live="polite">
+        <div class="eyebrow"><span id="position">01 / 03</span><span id="company">Loading quote</span></div>
+        <div class="symbol-row"><h1 id="symbol">—</h1><span class="exchange">NYSE</span></div>
+        <div class="price-row"><span class="currency">$</span><span id="price">—</span></div>
+        <div class="change" id="change">—</div>
+      </section>
+      <section id="holding-card" class="holding-card glass-panel hidden"><div><span class="label">YOUR POSITION</span><strong id="shares">— shares</strong></div><div><span class="label">UNREALIZED RETURN</span><strong id="gain">—</strong><small id="gain-percent"></small></div></section>
+      <footer><span class="rotation-pill glass-chip" id="rotation">Next ticker in 01:00</span><span class="shortcut">Press <kbd>Ctrl</kbd><kbd>,</kbd> to configure</span></footer>
+    </main>
+    <button class="settings-trigger glass-chip" aria-label="Open settings" title="Settings"><span>⚙</span><em>Configure</em></button>
+    <dialog id="settings-dialog">
+      <form method="dialog" id="settings-form">
+        <div class="modal-header"><div><span class="eyebrow">CONTROL ROOM</span><h2>Your ticker wall</h2></div><button class="close" value="cancel" aria-label="Close">×</button></div>
+        <p class="description">Add NYSE symbols to your rotation, then optionally attach the shares and average cost you own.</p>
+        <div class="add-row"><label><span>NYSE ticker</span><input id="ticker-input" maxlength="10" placeholder="e.g. IBM" autocomplete="off" /></label><button id="add-ticker" type="button">Add to wall</button></div>
+        <p class="field-note" id="ticker-message">Yahoo Finance prices refresh automatically every 10 seconds.</p>
+        <div class="settings-section"><div class="section-title"><span>ROTATION</span><span class="field-note">Every 1 minute</span></div><div id="ticker-list" class="ticker-list"></div></div>
+        <div class="settings-section"><div class="section-title"><span>HOLDINGS</span><span class="field-note">Shares &amp; cost basis</span></div><div id="holding-list" class="holding-list"></div></div>
+        <div class="modal-footer"><button class="secondary" id="reset-demo" type="button">Restore demo</button><button class="primary" value="save">Save changes</button></div>
+      </form>
+    </dialog>
+    <script src="renderer.js"></script>
+  </body>
+</html>
