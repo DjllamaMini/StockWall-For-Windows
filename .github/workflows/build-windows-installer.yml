@@ -1,0 +1,40 @@
+name: Build Windows installer
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  installer:
+    name: Create TickerWall Setup.exe
+    runs-on: windows-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v5
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify source
+        run: npm run lint
+
+      - name: Build NSIS installer
+        run: npm run dist:win
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: TickerWall-Windows-Installer
+          path: dist/TickerWall-Setup-*.exe
+          if-no-files-found: error
+          retention-days: 30
