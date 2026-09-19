@@ -3,8 +3,6 @@ name: Build Windows installer
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
 
@@ -17,10 +15,17 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Check out source
+codex/develop-multi-monitor-stock-display-app-xlyr9n
         uses: actions/checkout@v5
 
       - name: Set up Node
         uses: actions/setup-node@v5
+
+        uses: actions/checkout@v5
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+main
         with:
           node-version: 22
 
